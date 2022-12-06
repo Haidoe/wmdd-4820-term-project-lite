@@ -191,16 +191,84 @@ addMovie.addEventListener("click", () => {
 // ****************************************************************************
 // ****************************************************************************
 //  View the Available Movies - 5 marks
-load.addEventListener("click", () => {});
+load.addEventListener("click", () => {
+  //Enable the disabled input buttons
+
+  // prev
+  prev.disabled = false;
+  //next
+  next.disabled = false;
+  //pick movie
+  pickMovie.disabled = false;
+
+  const movie = movieObjectsArray[0];
+
+  console.log(movie);
+  //   c2Movie
+  c2Movie.value = movie.title;
+  //   c2Time
+  c2Time.value = movie.showtime;
+  //   c2Price
+  c2Price.value = movie.price;
+});
 
 // ****************************************************************************
 // ****************************************************************************
 //  Navigate through the Showtimes - 5 marks each (so 15 marks for this section)
-next.addEventListener("click", () => {});
+next.addEventListener("click", () => {
+  currentIndex++;
+  //   currentIndex = currentIndex + 1;
 
-prev.addEventListener("click", () => {});
+  if (currentIndex >= movieObjectsArray.length) {
+    currentIndex = 0;
+  }
 
-pickMovie.addEventListener("click", () => {});
+  const movie = movieObjectsArray[currentIndex];
+
+  // currentIndex
+  console.log("NEXT", currentIndex);
+
+  //   c2Movie
+  c2Movie.value = movie.title;
+  //   c2Time
+  c2Time.value = movie.showtime;
+  //   c2Price
+  c2Price.value = movie.price;
+});
+
+prev.addEventListener("click", () => {
+  console.log("PREV");
+
+  currentIndex--;
+  //   currentIndex = currentIndex - 1;
+
+  if (currentIndex < 0) {
+    currentIndex = movieObjectsArray.length - 1;
+  }
+
+  const movie = movieObjectsArray[currentIndex];
+
+  // currentIndex
+  console.log("NEXT", currentIndex);
+
+  //   c2Movie
+  c2Movie.value = movie.title;
+  //   c2Time
+  c2Time.value = movie.showtime;
+  //   c2Price
+  c2Price.value = movie.price;
+});
+
+pickMovie.addEventListener("click", () => {
+  console.log("PICK");
+  const movie = movieObjectsArray[currentIndex];
+
+  c3Movie.value = movie.title;
+
+  c3Time.value = movie.showtime;
+
+  moviePrice = movie.price;
+});
 
 // ****************************************************************************
 // ****************************************************************************
