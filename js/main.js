@@ -268,9 +268,41 @@ pickMovie.addEventListener("click", () => {
   c3Time.value = movie.showtime;
 
   moviePrice = movie.price;
+
+  c3Output.innerHTML = "";
 });
 
 // ****************************************************************************
 // ****************************************************************************
 //  Calculate Ticket Price - 10 marks
-calcTotal.addEventListener("click", () => {});
+calcTotal.addEventListener("click", () => {
+  console.log("CALC TOTAL");
+
+  if (moviePrice <= 0) {
+    c3Output.innerHTML = "Pick a movie first";
+    return;
+  }
+
+  let numTickets = c3NumTickets.value;
+
+  if (!numTickets) {
+    c3Output.innerHTML = "Number of Tickets Field is required";
+    return;
+  }
+
+  numTickets = Number(numTickets);
+
+  const totalCost = moviePrice * numTickets * 1.15;
+
+  c3Total.value = totalCost.toFixed(2);
+
+  c3Output.innerHTML = `
+    Movie: ${c3Movie.value} <br />
+    Time: ${c3Time.value} <br />
+    Movie Price: ${moviePrice} <br />
+    Number of Tickets: ${numTickets} <br />
+    Total Cost: ${totalCost.toFixed(2)} <br />
+  `;
+
+  c3NumTickets.value = "";
+});
